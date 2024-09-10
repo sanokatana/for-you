@@ -12,7 +12,7 @@ body {
     height: 100vh;
     width: 100vw;
     background: #85658f;
-    font-family: "Pangolin", cursive;
+    font-family: "Pangolin";
     font-size: 1vmin;
     display: flex;
     align-items: center;
