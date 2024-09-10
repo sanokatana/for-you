@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Day Card</title>
+    <link href='https://fonts.googleapis.com/css?family=Solitreo' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" onclick="showPoem()">
+    <div class="envelope"></div>
+    <div class="card">
+      <h1 class="message">A Letter <br> For My <br> You</h1>
+    </div>
+    <div class="cover"></div>
+    <div class="lid"></div>
+    <div class="shadow"></div>
+  </div>
+
+  <script>
+    let currentSection = 0;
+
+    const poems = [
+      `Forgive me if being with me <br> only hurts you. <br> I've really tried my best to show you my love, <br> poured my heart into every moment <br> that we had together and shared. <br> I know my best wasn't enough <br> and for that I am sorry.`,
+      `I wanted to be a comfort for you, your joy, <br> but perhaps I brought more pain <br> more problems than peace. <br> My intentions were pure, <br> my love for you was genuine <br> even if you couldn't see it, <br> it was, it is, it will always be, yet somehow, <br> I failed to make you feel it.`,
+      `I know it's too late now, I know the damage is done, <br> and know that I am truly sorry, <br> I've failed as someone to love you, <br> I've never meant to hurt you, <br> never meant to fall short. <br> Forigve me, I've done my best, <br> I've done everything I could, <br> even if it wasn't enough.`,
+      `I don't know if, <br> you're willing to meet <br> when im there in Qatar, <br> If this message of mine is my last <br> fii amanillah fi hifzillah <br> I love you so much`
+    ];
+
+    function showPoem() {
+      document.body.innerHTML = `
+        <div class="poem-container">
+          <div class="poem">${poems[currentSection]}</div>
+          <div class="controls">
+            <button class="nav-btn" onclick="prevSection()">&#10094;</button>
+            <button class="nav-btn" onclick="nextSection()">&#10095;</button>
+          </div>
+        </div>
+      `;
+      document.body.style.backgroundColor = "white";
+    }
+
+    function prevSection() {
+      if (currentSection > 0) {
+        currentSection--;
+        document.querySelector('.poem').innerHTML = poems[currentSection];
+      }
+    }
+
+    function nextSection() {
+      if (currentSection < poems.length - 1) {
+        currentSection++;
+        document.querySelector('.poem').innerHTML = poems[currentSection];
+      }
+    }
+  </script>
+</body>
+</html>

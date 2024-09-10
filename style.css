@@ -1,0 +1,189 @@
+/* CSS */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: Solitreo;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background: #85658f;
+    font-family: "Pangolin", cursive;
+    font-size: 1vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    top: 0vmin;
+}
+
+.envelope {
+    position: relative;
+    background: #f980a1;
+    height: 30vmin;
+    width: 47.9vmin;
+}
+
+.card {
+    position: absolute;
+    background: white;
+    height: 20vmin;
+    width: 43vmin;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 2.5vmin;
+    top: 10vmin;
+    animation: slide-rev 0.2s ease-out;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.card.expand-card {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: white;
+}
+
+.message {
+    position: absolute;
+    text-align: center;
+    top: 5vmin;
+}
+
+.cover {
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-bottom: 15vmin solid #fba7bd;
+    border-left: 24vmin solid transparent;
+    border-right: 24vmin solid transparent;
+    top: 15vmin;
+    z-index: 3;
+}
+
+.cover::after {
+    /*left triangle*/
+    position: absolute;
+    content: "";
+    border-left: 24.5vmin solid #fcbbcc;
+    border-bottom: 15vmin solid transparent;
+    border-top: 15vmin solid transparent;
+    top: -15vmin;
+    left: -24vmin;
+}
+
+.cover::before {
+    position: absolute;
+    content: "";
+    border-right: 24.5vmin solid #fcbbcc;
+    border-bottom: 15vmin solid transparent;
+    border-top: 15vmin solid transparent;
+    top: -15vmin;
+    left: -0.5vmin;
+}
+
+.lid {
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-top: 15vmin solid #f980a1;
+    border-left: 24vmin solid transparent;
+    border-right: 24vmin solid transparent;
+    top: 0;
+    transform-origin: top;
+    animation: open-rev 2s;
+}
+
+.container:hover .lid {
+    animation: open 0.8s;
+    animation-fill-mode: forwards;
+}
+
+.container:hover .card {
+    animation: slide 0.5s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.shadow {
+    position: relative;
+    top: 3vmin;
+    border-radius: 50%;
+    opacity: 0.7;
+    height: 2vmin;
+    width: 48vmin;
+    background: #ffdee9;
+}
+
+.poem-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vmin;
+}
+
+.poem {
+    font-family: "Pangolin", cursive;
+    font-size: 2vmin;
+    text-align: center;
+    margin-bottom: 2vmin;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1vmin;
+}
+
+.nav-btn {
+    background-color: #f980a1;
+    border: none;
+    color: white;
+    padding: 0.5vmin 2vmin;
+    font-size: 2vmin;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.nav-btn:hover {
+    background-color: #fba7bd;
+}
+
+
+@keyframes open {
+    100% {
+        transform: rotatex(180deg);
+    }
+}
+
+@keyframes slide {
+    100% {
+        transform: translatey(-15vmin);
+        z-index: 2;
+    }
+}
+
+@keyframes open-rev {
+    from {
+        transform: rotatex(-180deg);
+    }
+}
+
+@keyframes slide-rev {
+    from {
+        transform: translatey(-15vmin);
+    }
+}
