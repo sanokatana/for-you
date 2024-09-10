@@ -8,38 +8,56 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container" onclick="showPoem()">
-    <div class="envelope"></div>
-    <div class="card">
-      <h1 class="message">A Letter <br> For <br> You</h1>
-    </div>
-    <div class="cover"></div>
-    <div class="lid"></div>
-    <div class="shadow"></div>
-  </div>
+    <div id="letter-container" class="container" onclick="showPoem()">
+        <div class="envelope"></div>
+        <div class="card">
+          <h1 class="message">A Letter <br> For <br> You</h1>
+        </div>
+        <div class="cover"></div>
+        <div class="lid"></div>
+        <div class="shadow"></div>
+      </div>
+      
+
+  <!-- Corrected Audio Element for Background Music -->
+  <audio id="background-music" src="/her.mp3" loop></audio>
+
+  <div id="poem-content"></div>
 
   <script>
     let currentSection = 0;
-
     const poems = [
       `Forgive me if being with me <br> only hurts you. <br> I've really tried my best to show you my love, <br> poured my heart into every moment <br> that we had together and shared. <br> I know my best wasn't enough <br> and for that I am sorry.`,
       `I wanted to be a comfort for you, your joy, <br> but perhaps I brought more pain <br> more problems than peace. <br> My intentions were pure, <br> my love for you was genuine <br> even if you couldn't see it, <br> it was, it is, it will always be, yet somehow, <br> I failed to make you feel it.`,
       `I know it's too late now, I know the damage is done, <br> and know that I am truly sorry, <br> I've failed as someone to love you, <br> I've never meant to hurt you, <br> never meant to fall short. <br> Forigve me, I've done my best, <br> I've done everything I could, <br> even if it wasn't enough.`,
+      `"Even all the fights an arguments ?"<br> Yes even through bad days, <br> through heavy fights, <br> even when everything is too much <br> its all hard to deal with <br> I'll always be here, <br> every trial, every tear, everything <br> I still want to be with you.`,
+      `I'm sorry, I blamed you too often for the loneliness I experienced, <br> In the end, I realized it wasn't you who could never understand <br> It was just my life that was too lonely, <br> you didn't do anything wrong. <br> I was the only one who was a mess.`,
+      `I projected my emptiness onto you, <br> expecting you to fill a void thats vast,<br> you tried, you cared, you were there <br> and still, I felt adrift, lost in my own solitude.`,
+      `It wasn't your fault, it was my own struggle <br> a battle with my shadows that you couldnt <br> fight for me. <br> You were my light, but I couldn't see it <br> blinded by my own despair and confusion and problems.`,
+      `I'm sorry for placing that burden on you, <br> for not seeing the truth sooner. <br> It was never about you not understanding, <br> but about me not understanding myself.`,
       `I don't know if, <br> you're willing to meet <br> when im there in Qatar, <br> If this message of mine is my last <br> fii amanillah fi hifzillah <br> I love you so much`
     ];
 
     function showPoem() {
-      document.body.innerHTML = `
-        <div class="poem-container">
-          <div class="poem">${poems[currentSection]}</div>
-          <div class="controls">
-            <button class="nav-btn" onclick="prevSection()">&#10094;</button>
-            <button class="nav-btn" onclick="nextSection()">&#10095;</button>
-          </div>
-        </div>
-      `;
-      document.body.style.backgroundColor = "white";
-    }
+  // Play the music when the poem is shown
+  const audio = document.getElementById("background-music");
+  audio.play(); // Play the background music
+
+  // Hide the letter container
+  document.getElementById("letter-container").style.display = 'none';
+
+  // Update only the #poem-content element, not the entire body
+  document.getElementById("poem-content").innerHTML = `
+    <div class="poem-container">
+      <div class="poem">${poems[currentSection]}</div>
+      <div class="controls">
+        <button class="nav-btn" onclick="prevSection()">&#10094;</button>
+        <button class="nav-btn" onclick="nextSection()">&#10095;</button>
+      </div>
+    </div>
+  `;
+  document.body.style.backgroundColor = "white";
+}
 
     function prevSection() {
       if (currentSection > 0) {
